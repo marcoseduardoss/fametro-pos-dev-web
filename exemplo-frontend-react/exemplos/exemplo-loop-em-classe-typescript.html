@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura Condicional em React</title>
+
+    <!-- Inclua o React e o ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+     
+</head>
+<body>
+    <div id="root"></div> 
+
+    <!-- Seu código React -->
+    <script type="text/babel">
+        
+        class MinhaApp extends React.Component {
+            // Lista de frutas
+            listaDeFrutas = ["Maçã", "Banana", "Laranja", "Morango"];
+            
+            // Função para criar a lista de frutas
+            criarListaDeFrutas() {
+
+                return (
+                    <ul>
+                        {this.listaDeFrutas.map((fruta, index) => (
+                            <li key={index}>{fruta}</li>
+                        ))}
+                    </ul>
+                );
+                
+            }
+
+            // Renderize a lista de frutas no DOM
+            render() {
+                return this.criarListaDeFrutas();
+            }
+        }
+
+        ReactDOM.render(<MinhaApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>

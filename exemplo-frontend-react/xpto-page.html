@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manutenção de Xptos</title>
+
+    <!-- Inclua o React e o ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <style>
+        /* Estilos para melhorar a usabilidade e o design */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        .input-medium {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: gray;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-buttons {
+            margin-top: 10px;
+        }
+		
+		/* Estilo para os botões */
+		.btn-remover {
+			background-color: #ff0000; /* Cor vermelha */
+		}
+		.btn-cadastrar {
+			background-color: #ff0000; /* Cor vermelha */
+		}		
+		.btn-salvar {
+			background-color: green; /* Cor vermelha */
+		}			
+		.btn-editar {
+			background-color: #ff0000; /* Cor vermelha */
+		}		
+		.btn-remover {
+			background-color: #ff0000; /* Cor vermelha */
+		}		
+		.btn-cancelar {
+			background-color: orange; /* Cor vermelha */
+		}
+	
+    /* ... FIM - Estilos ... */
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    class XptoPageComponent extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                xptos: [],
+                novoXpto: {
+                    valor1: '',
+                    valor2: '',
+                    valor3: '' // Novo campo para data e hora
+                },
+                xptoEmEdicao: null
+            };
+        }
+
+        componentDidMount() {
+            this.fetchXptos();
+        }
+
+        async fetchXptos() {
+            try {
+                const response = await fetch('http://localhost:8080/v1/xptos');
+                if (response.ok) {
+                    const data = await response.json();
+                    this.setState({ xptos: data });
+                } else {
+                    console.error('Erro ao buscar os xptos.');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar os xptos:', error);
+            }
+        }
+
+        async cadastrarXpto() {
+            try {
+                // Formate o valor3 para o formato desejado
+                const formattedValue3 = this.formatarDataHora(this.state.novoXpto.valor3);
+                const response = await fetch('http://localhost:8080/v1/xptos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        ...this.state.novoXpto,
+                        valor3: formattedValue3
+                    }),
+                });
+                if (response.ok) {
+                    this.fetchXptos();
+                    this.setState({
+                        novoXpto: {
+                            valor1: '',
+                            valor2: '',
+                            valor3: ''
+                        }
+                    });
+                } else {
+                    console.error('Erro ao cadastrar o xpto.');
+                }
+            } catch (error) {
+                console.error('Erro ao cadastrar o xpto:', error);
+            }
+        }
+
+        async removerXpto(id) {
+            try {
+                const response = await fetch(`http://localhost:8080/v1/xptos/${id}`, {
+                    method: 'DELETE',
+                });
+                if (response.ok) {
+                    this.fetchXptos();
+                } else {
+                    console.error('Erro ao remover o xpto.');
+                }
+            } catch (error) {
+                console.error('Erro ao remover o xpto:', error);
+            }
+        }
+
+        async editarXpto() {
+            try {
+                // Formate o valor3 para o formato desejado
+                const formattedValue3 = this.formatarDataHora(this.state.xptoEmEdicao.valor3);
+                const response = await fetch(`http://localhost:8080/v1/xptos/${this.state.xptoEmEdicao.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        ...this.state.xptoEmEdicao,
+                        valor3: formattedValue3
+                    }),
+                });
+                if (response.ok) {
+                    this.fetchXptos();
+                    this.setState({ xptoEmEdicao: null });
+                } else {
+                    console.error('Erro ao editar o xpto.');
+                }
+            } catch (error) {
+                console.error('Erro ao editar o xpto:', error);
+            }
+        }
+
+        // Função para formatar data e hora no formato "2023-01-20T20:38:12"
+        formatarDataHora(dataHora) {
+            const data = new Date(dataHora);
+            const ano = data.getFullYear();
+            const mes = String(data.getMonth() + 1).padStart(2, '0');
+            const dia = String(data.getDate()).padStart(2, '0');
+            const hora = String(data.getHours()).padStart(2, '0');
+            const minuto = String(data.getMinutes()).padStart(2, '0');
+            const segundo = String(data.getSeconds()).padStart(2, '0');
+            return `${ano}-${mes}-${dia}T${hora}:${minuto}:${segundo}`;
+        }
+          // Função para formatar data e hora no formato "dd/mm/yyyy hh:mm:ss"
+        formatarDataHoraPadraoBR(dataHora) {
+            const data = new Date(dataHora);
+            const dia = String(data.getDate()).padStart(2, '0');
+            const mes = String(data.getMonth() + 1).padStart(2, '0');
+            const ano = data.getFullYear();
+            const hora = String(data.getHours()).padStart(2, '0');
+            const minuto = String(data.getMinutes()).padStart(2, '0');
+            const segundo = String(data.getSeconds()).padStart(2, '0');
+            return `${dia}/${mes}/${ano} ${hora}:${minuto}:${segundo}`;
+        }
+
+        render() {
+            return (
+                <div className="container">
+                    <h1>Manutenção de Xptos</h1>
+                    <form>
+                        <label>
+                            Valor1:
+                            <input
+                                type="text"
+                                value={this.state.novoXpto.valor1}
+                                onChange={(e) => this.setState({ novoXpto: { ...this.state.novoXpto, valor1: e.target.value } })}
+                            />
+                        </label>
+                        <br />
+                        <label>
+                            Valor2:
+                            <input
+                                type="text"
+                                value={this.state.novoXpto.valor2}
+                                onChange={(e) => this.setState({ novoXpto: { ...this.state.novoXpto, valor2: e.target.value } })}
+                            />
+                        </label>
+                        <br />
+                        <label>
+                            Valor3:
+                            <input
+                                type="datetime-local"  className="input-medium"
+                                value={this.state.novoXpto.valor3}
+                                onChange={(e) => this.setState({ novoXpto: { ...this.state.novoXpto, valor3: e.target.value } })}
+                            />
+                            (Data e Hora)
+                        </label>
+                        <br />
+                        <button type="button" onClick={() => this.cadastrarXpto()}>Cadastrar</button>
+                    </form>
+                    <ul>
+                        {this.state.xptos.map((xpto, index) => (
+                            <li key={index}>
+                                <strong>Valor1:</strong> {xpto.valor1}<br />
+                                <strong>Valor2:</strong> {xpto.valor2}<br />
+                                <strong>Valor3 (Data e Hora):</strong> {this.formatarDataHoraPadraoBR(xpto.valor3)}<br />
+                                <div className="edit-buttons">
+                                    <button onClick={() => this.setState({ xptoEmEdicao: xpto })}>Editar</button>
+                                    <span>&nbsp;</span>
+                                    <button className="btn-remover" onClick={() => this.removerXpto(xpto.id)}>Remover</button>
+                                </div>
+                                {this.state.xptoEmEdicao && this.state.xptoEmEdicao.id === xpto.id && (
+                                    <form>
+                                        <label>
+                                            Novo Valor1:
+                                            <input
+                                                type="text"
+                                                value={this.state.xptoEmEdicao.valor1}
+                                                onChange={(e) => this.setState({ xptoEmEdicao: { ...this.state.xptoEmEdicao, valor1: e.target.value } })}
+                                            />
+                                        </label>
+                                        <br />
+                                        <label>
+                                            Novo Valor2:
+                                            <input
+                                                type="text"
+                                                value={this.state.xptoEmEdicao.valor2}
+                                                onChange={(e) => this.setState({ xptoEmEdicao: { ...this.state.xptoEmEdicao, valor2: e.target.value } })}
+                                            />
+                                        </label>
+                                        <br />
+                                        <label>
+                                            Novo Valor3 (Data e Hora):
+                                            <input
+                                                type="text"
+                                                value={this.state.xptoEmEdicao.valor3}
+                                                onChange={(e) => this.setState({ xptoEmEdicao: { ...this.state.xptoEmEdicao, valor3: e.target.value } })}
+                                            />
+                                        </label>
+                                        <br />
+                                        <div className="edit-buttons">
+                                            <button className="btn-salvar" type="button" onClick={() => this.editarXpto()}>Salvar</button>
+                                            <span>&nbsp;</span>
+                                            <button className="btn-cancelar" type="button" onClick={() => this.setState({ xptoEmEdicao: null })}>Cancelar</button>
+                                        </div>
+                                    </form>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<XptoPageComponent />, document.getElementById('root'));
+
+</script>
+</html>
