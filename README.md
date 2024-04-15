@@ -2,12 +2,14 @@
 
 ## Disciplina: Arquitetura e Frameworks para Desenvolvimento Web
 
-**Atividade:** Desenvolvimento de API RESTful 🚀  
+**Atividade:** Desenvolvimento de API RESTful e Frontend React🚀  
 **Professor:** Marcos Eduardo
 
 ### Descrição
 
 Este repositório contém os módulos de back-end e front-end para uma aplicação desenvolvida como parte da disciplina de Arquitetura e Frameworks para Desenvolvimento Web. O projeto utiliza Spring Boot para o back-end e React para o front-end, com integração via API RESTful.
+
+Obs.:  Normalmente, a expressão é utilizada para trazer exemplos e hipóteses para uma reunião ou uma conversa na equipe de tecnologia. Por exemplo: considerar a variável XPTO, desenvolver a funcionalidade XPTO ou o software XPTO, analisar o KPI XPTO, entre outros. 
 
 ### Projetos
 
