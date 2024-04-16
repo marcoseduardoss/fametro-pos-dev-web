@@ -1,0 +1,8 @@
+-- DDL definition
+-- schema.sql
+CREATE TABLE IF NOT EXISTS Xpto (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    valor1 VARCHAR(255) NOT NULL,
+    valor2 VARCHAR(255) NOT NULL,
+    valor3 TIMESTAMP
+);

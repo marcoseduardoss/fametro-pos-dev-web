@@ -1,9 +1,10 @@
-package br.fametro.xpto.v1.dto;
+package br.edu.unifametro.myproj.v1.xpto.mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.fametro.xpto.v1.model.Xpto;
+import br.edu.unifametro.myproj.v1.xpto.dto.XptoDto;
+import br.edu.unifametro.myproj.v1.xpto.model.Xpto;
 
 public class XptoDtoMapper {
 

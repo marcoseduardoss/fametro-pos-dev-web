@@ -1,4 +1,4 @@
-package br.fametro.xpto.config;
+package br.edu.unifametro.myproj.config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import br.fametro.xpto.v1.repository.PersistenciaException;
-import br.fametro.xpto.v1.service.NegocioException;
+import br.edu.unifametro.myproj.v1.xpto.repository.PersistenciaException;
+import br.edu.unifametro.myproj.v1.xpto.service.NegocioException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {

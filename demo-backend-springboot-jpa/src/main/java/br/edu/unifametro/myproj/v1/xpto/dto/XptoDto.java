@@ -1,4 +1,4 @@
-package br.fametro.xpto.v1.dto;
+package br.edu.unifametro.myproj.v1.xpto.dto;
 
 import java.time.LocalDateTime;
 

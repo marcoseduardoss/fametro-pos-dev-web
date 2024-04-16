@@ -1,4 +1,4 @@
-package br.fametro.xpto.v1.service;
+package br.edu.unifametro.myproj.v1.xpto.service;
 
 public class NegocioException extends RuntimeException {
 
