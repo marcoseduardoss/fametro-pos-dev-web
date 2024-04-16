@@ -10,7 +10,9 @@ import br.edu.unifametro.myproj.v1.xpto.model.Xpto;
 
 /**
  * Interface de repositório para a entidade Xpto.
- * Esta interface estende JpaRepository, fornecendo métodos CRUD padrão para a entidade Xpto.
+ * Esta interface fornece métodos CRUD padrão para a entidade Xpto e 
+ * outros métodos genéricos (de uso padrão) de acesso e manipulação
+ * de dados.
  */
 public interface RepositorioXpto extends JpaRepository<Xpto, Long> {
 
