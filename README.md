@@ -20,7 +20,7 @@ Veja abaixo um GIF demonstrando como abrir e executar os projetos no Eclipse e V
 ### Projetos
 
 #### Back-End
-Localização: `package br.fametro.xpto;`
+Localização: `package br.fametro.myproj.xpto;`
 
 O back-end é desenvolvido com Spring Boot, configurado para oferecer uma API RESTful documentada com Swagger. Utiliza conexões CORS, configurações de servlet e JPA para interação com banco de dados SQLite através de Hibernate.
 
