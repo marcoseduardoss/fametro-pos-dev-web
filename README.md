@@ -24,7 +24,7 @@ Localização: `package br.fametro.myproj.xpto;`
 
 O back-end é desenvolvido com Spring Boot, configurado para oferecer uma API RESTful documentada com Swagger. Utiliza conexões CORS, configurações de servlet e JPA para interação com banco de dados SQLite através de Hibernate.
 
-**Tecnologias:** Spring Boot, Swagger, JPA
+**Tecnologias:** Spring Boot, Swagger, JPA e H2
 
 #### Front-End
 Localização: `html e javascript dentro do projeto`
