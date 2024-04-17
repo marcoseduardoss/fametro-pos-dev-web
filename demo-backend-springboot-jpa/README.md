@@ -21,13 +21,6 @@ Veja abaixo um GIF demonstrando como abrir e executar os projetos no Eclipse e V
 - IDE de sua preferência ou Eclipse STS (utilizado em sala)
 - Git
 
-### Configurando o Eclipse ou outra IDE
-
-1. Instale o Eclipse da [página oficial](https://www.eclipse.org/downloads/).
-2. Importe o projeto: `File > Import > Existing Maven Projects`.
-3. Navegue até a pasta do projeto e selecione-a para importação.
-4. Na primeira execução, é neccessário escolher a classe `Main.java` do projeto.
-
 ### Clonando o Repositório
 
 Para obter o projeto, use o seguinte comando do Git:
@@ -36,6 +29,15 @@ Para obter o projeto, use o seguinte comando do Git:
 git clone https://github.com/marcoseduardoss/fametro-pos-dev-web
 ```
 ## Executando o Projeto
+
+Obs.: A execução via IDE requer a instalação do Java (via Eclipse pode ser JRE mesmo). Para executar via linha de comando, instale o JDK Java mais recente e o Maven. Para fazer isso, você pode seguir o passo a passo das intruções adicionadas neste README.
+
+### Via Eclipse (ou outra IDE, o processo é parecido)
+
+1. Instale o Eclipse da [página oficial](https://www.eclipse.org/downloads/).
+2. Importe o projeto: `File > Import > Existing Maven Projects`.
+3. Navegue até a pasta do projeto e selecione-a para importação.
+4. Na primeira execução, é neccessário escolher a classe `Main.java` do projeto.
 
 ### Via Linha de Comando
 
