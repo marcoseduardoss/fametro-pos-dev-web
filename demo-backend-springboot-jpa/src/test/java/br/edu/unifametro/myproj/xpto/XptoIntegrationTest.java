@@ -13,7 +13,6 @@
 //import java.time.LocalDateTime;
 //
 //import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Disabled;
 //import org.junit.jupiter.api.Test;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,7 +26,7 @@
 //import jakarta.persistence.EntityManager;
 //
 ////comente o @Disabled, caso queira executar este teste
-//@Disabled("Desabilitado devido à manutenção")
+////@Disabled("Desabilitado devido à manutenção")
 //@SpringBootTest
 //@AutoConfigureMockMvc
 //@Transactional

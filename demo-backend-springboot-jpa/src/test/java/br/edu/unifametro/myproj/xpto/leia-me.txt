@@ -1,7 +1,8 @@
 Aviso:
 
 Exemplos de testes E2E (ponta a ponta), testes unitários, e testes de integração.
-Descomente caso queira utilizar em seu projeto.
+Descomente caso queira utilizar em seu projeto. Para a atividade final, cobertura 
+de testes não é obrigatório.
 
 Atenciosamente,
 Marcos Eduardo

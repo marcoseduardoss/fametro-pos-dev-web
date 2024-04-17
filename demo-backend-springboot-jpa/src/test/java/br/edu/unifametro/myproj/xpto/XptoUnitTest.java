@@ -16,7 +16,6 @@
 //
 //import org.junit.jupiter.api.AfterEach;
 //import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Disabled;
 //import org.junit.jupiter.api.Test;
 //import org.mockito.Mock;
 //import org.mockito.MockitoAnnotations;
@@ -29,7 +28,7 @@
 //import br.edu.unifametro.myproj.v1.xpto.service.ServicoXpto;
 //
 ////comente o @Disabled, caso queira executar este teste
-//@Disabled("Desabilitado devido à manutenção")
+////@Disabled("Desabilitado devido à manutenção")
 //@SpringBootTest
 //class XptoUnitTest {
 //
@@ -93,12 +92,11 @@
 //
 //	@Test
 //	void quandoAtualizarXpto_entaoDeveriaRetornarXptoAtualizado() {
-//		Xpto existenteXpto = new Xpto(1L, "Teste", "Descrição Teste", LocalDateTime.now());
 //		Xpto atualizadoXpto = new Xpto(1L, "Atualizado", "Descrição Atualizada", LocalDateTime.now());
 //
 //		// Configure o mock para retornar o Xpto existente quando o findById for
 //		// chamado.
-//		given(repositorioXpto.findById(1L)).willReturn(Optional.of(existenteXpto));
+//		given(repositorioXpto.existsById(1L)).willReturn(true);
 //
 //		// Configure o mock para retornar o Xpto atualizado quando o save for chamado.
 //		given(repositorioXpto.save(any(Xpto.class))).willReturn(atualizadoXpto);
@@ -110,12 +108,9 @@
 //
 //	@Test
 //	void quandoDeletarXpto_entaoDeveriaRemover() {
-//		// Criação do objeto Xpto existente.
-//		Xpto existenteXpto = new Xpto(1L, "Teste", "Descrição Teste", LocalDateTime.now());
-//
 //		// Configuração do mock para retornar o Xpto existente quando o método findById
 //		// for chamado com o ID 1L.
-//		given(repositorioXpto.findById(1L)).willReturn(Optional.of(existenteXpto));
+//		given(repositorioXpto.existsById(1L)).willReturn(true);
 //
 //		// Ação de deletar o Xpto.
 //		servicoXpto.removerXpto(new Xpto(1L));
@@ -129,7 +124,7 @@
 //		when(repositorioXpto.findById(anyLong())).thenReturn(Optional.empty());
 //
 //		assertThatThrownBy(() -> servicoXpto.buscarXptoPorId(2L)).isInstanceOf(ValorOuRecursoNaoEncontradoException.class)
-//				.hasMessageContaining("Xpto nao encontrada.");
+//				.hasMessageContaining("Xpto com ID 2 não encontrada.");
 //	}
 //
 //}

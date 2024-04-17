@@ -3,7 +3,6 @@
 //import static org.assertj.core.api.Assertions.assertThat;
 //
 //import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Disabled;
 //import org.junit.jupiter.api.Test;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,7 @@
 //import br.edu.unifametro.myproj.v1.xpto.dto.XptoDto;
 //
 ////comente o @Disabled, caso queira executar este teste
-//@Disabled("Desabilitado devido à manutenção")
+////@Disabled("Desabilitado devido à manutenção")
 //@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 //class XptoE2ETest {
 //
