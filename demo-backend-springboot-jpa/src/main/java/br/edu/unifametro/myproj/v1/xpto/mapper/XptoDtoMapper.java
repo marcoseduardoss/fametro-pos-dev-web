@@ -7,32 +7,32 @@ import br.edu.unifametro.myproj.v1.xpto.model.Xpto;
 
 public class XptoDtoMapper {
 
-    public static XptoDto toDto(Xpto xpto) {
-        XptoDto dto = new XptoDto();
-        dto.setId(xpto.getId());
-        dto.setValor1(xpto.getValor1());
-        dto.setValor2(xpto.getValor2());
-        dto.setValor3(xpto.getValor3());
-        return dto;
+    public static XptoDto toDto(Xpto in) {
+        XptoDto out = new XptoDto();
+        out.setId(in.getId());
+        out.setValor1(in.getValor1());
+        out.setValor2(in.getValor2());
+        out.setValor3(in.getValor3());
+        return out;
     }
     
-    public static Xpto fromDto(XptoDto dto) {
-        Xpto xpto = new Xpto();
-        xpto.setId(dto.getId());
-        xpto.setValor1(dto.getValor1());
-        xpto.setValor2(dto.getValor2());
-        xpto.setValor3(dto.getValor3());
-        return xpto;
+    public static Xpto fromDto(XptoDto in) {
+        Xpto out = new Xpto();
+        out.setId(in.getId());
+        out.setValor1(in.getValor1());
+        out.setValor2(in.getValor2());
+        out.setValor3(in.getValor3());
+        return out;
     }
 
-    public static List<XptoDto> toDtoList(List<Xpto> xptos) {
-        return xptos.stream()
+    public static List<XptoDto> toDtoList(List<Xpto> list) {
+        return list.stream()
                 .map(XptoDtoMapper::toDto)
                 .toList();
     }
 
-    public static List<Xpto> fromDtoList(List<XptoDto> dtos) {
-        return dtos.stream()
+    public static List<Xpto> fromDtoList(List<XptoDto> list) {
+        return list.stream()
                 .map(XptoDtoMapper::fromDto)
                 .toList();
     }
