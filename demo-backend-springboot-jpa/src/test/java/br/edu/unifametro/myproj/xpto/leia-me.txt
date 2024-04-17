@@ -1,0 +1,7 @@
+Aviso:
+
+Exemplos de testes E2E (ponta a ponta), testes unitários, e testes de integração.
+Descomente caso queira utilizar em seu projeto.
+
+Atenciosamente,
+Marcos Eduardo
