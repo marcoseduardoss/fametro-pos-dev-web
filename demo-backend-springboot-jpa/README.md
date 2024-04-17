@@ -51,7 +51,7 @@ Para construir o JAR e executá-lo:
 
 ```bash
 mvn clean package
-java -jar target/exemplo-backend-springboot-jdbc-0.0.1-SNAPSHOT.jar
+java -jar target/exemplo-backend-springboot-jpa-0.0.1-SNAPSHOT.jar
 ```
 
 ### Acessando o Banco de Dados
