@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -27,8 +28,8 @@ import br.edu.unifametro.myproj.v1.xpto.model.Xpto;
 import br.edu.unifametro.myproj.v1.xpto.repository.RepositorioXpto;
 import br.edu.unifametro.myproj.v1.xpto.service.ServicoXpto;
 
-//comente esta linha, caso queira executar este teste
-//@Disabled("Desabilitado devido à manutenção")
+//comente o @Disabled, caso queira executar este teste
+@Disabled("Desabilitado devido à manutenção")
 @SpringBootTest
 class XptoUnitTest {
 
