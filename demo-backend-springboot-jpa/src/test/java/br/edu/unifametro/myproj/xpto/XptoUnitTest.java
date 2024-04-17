@@ -1,4 +1,4 @@
-package br.edu.unifametro.myproj;
+package br.edu.unifametro.myproj.xpto;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -80,7 +80,6 @@ class XptoUnitTest {
 	    assertThat(result.getValor1()).isEqualTo("Teste");
 	}
 
-
 	@Test
 	void quandoCriarXpto_entaoDeveriaPersistir() {
 		Xpto novoXpto = new Xpto(null, "Novo Teste", "Nova Descrição", LocalDateTime.now());
@@ -132,4 +131,5 @@ class XptoUnitTest {
 		assertThatThrownBy(() -> servicoXpto.buscarXptoPorId(2L)).isInstanceOf(ValorOuRecursoNaoEncontradoException.class)
 				.hasMessageContaining("Xpto nao encontrada.");
 	}
+
 }

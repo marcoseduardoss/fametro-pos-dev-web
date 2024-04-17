@@ -1,4 +1,4 @@
-package br.edu.unifametro.myproj;
+package br.edu.unifametro.myproj.xpto;
 
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.hasSize;
@@ -32,7 +32,7 @@ import jakarta.persistence.EntityManager;
 @AutoConfigureMockMvc
 @Transactional
 @ActiveProfiles("test")
-class XptoIntegrationTests {
+class XptoIntegrationTest {
 
 	@Autowired
 	private MockMvc mockMvc;
