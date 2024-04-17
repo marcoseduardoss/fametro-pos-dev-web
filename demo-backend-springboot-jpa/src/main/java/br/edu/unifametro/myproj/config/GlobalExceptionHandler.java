@@ -6,29 +6,37 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import br.edu.unifametro.myproj.v1.xpto.repository.PersistenciaException;
-import br.edu.unifametro.myproj.v1.xpto.service.NegocioException;
+import br.edu.unifametro.myproj.v1.xpto.exception.NegocioException;
+import br.edu.unifametro.myproj.v1.xpto.exception.PersistenciaException;
+import br.edu.unifametro.myproj.v1.xpto.exception.ValorOuRecursoNaoEncontradoException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+	
+	// Handler para exceções de negócio
+    @ExceptionHandler(ValorOuRecursoNaoEncontradoException.class)
+    public ResponseEntity<ErrorDetails> handleValorOuRecursoNaoEncontradoException(ValorOuRecursoNaoEncontradoException ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails("Valor ou recurso não encontrado", ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
 
     // Handler para exceções de negócio
     @ExceptionHandler(NegocioException.class)
-    public ResponseEntity<?> handleNegocioException(NegocioException ex, WebRequest request) {
+    public ResponseEntity<ErrorDetails> handleNegocioException(NegocioException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails("Erro de Negócio", ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
     // Handler para exceções de persistência
     @ExceptionHandler(PersistenciaException.class)
-    public ResponseEntity<?> handlePersistenciaException(PersistenciaException ex, WebRequest request) {
+    public ResponseEntity<ErrorDetails> handlePersistenciaException(PersistenciaException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails("Erro de Persistência", ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     // Handler genérico para outras exceções
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> handleGlobalException(Exception ex, WebRequest request) {
+    public ResponseEntity<ErrorDetails> handleGlobalException(Exception ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails("Erro Interno", ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }

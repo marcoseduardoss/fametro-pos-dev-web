@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>br.myproj</groupId>
-	<artifactId>exemplo-backend-springboot-jdbc</artifactId>
+	<artifactId>exemplo-backend-springboot-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -61,24 +61,11 @@
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
 
-
-		<!--		<dependency>-->
-		<!--		    <groupId>org.hibernate.orm</groupId>-->
-		<!--		    <artifactId>hibernate-community-dialects</artifactId>-->
-		<!--		</dependency>-->
-
-		<!--		<dependency>-->
-		<!--			<groupId>org.xerial</groupId>-->
-		<!--			<artifactId>sqlite-jdbc</artifactId>-->
-		<!--		</dependency>-->
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 
 	</dependencies>
 

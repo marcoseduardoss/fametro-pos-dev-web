@@ -1,4 +1,4 @@
-package br.fametro.xpto.v1.persistencia;
+package br.edu.unifametro.myproj.v1.xpto.exception;
 
 public class PersistenciaException extends RuntimeException {
 

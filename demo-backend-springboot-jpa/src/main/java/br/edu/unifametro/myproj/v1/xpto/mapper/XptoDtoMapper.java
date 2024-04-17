@@ -1,7 +1,6 @@
 package br.edu.unifametro.myproj.v1.xpto.mapper;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import br.edu.unifametro.myproj.v1.xpto.dto.XptoDto;
 import br.edu.unifametro.myproj.v1.xpto.model.Xpto;
@@ -29,12 +28,12 @@ public class XptoDtoMapper {
     public static List<XptoDto> toDtoList(List<Xpto> xptos) {
         return xptos.stream()
                 .map(XptoDtoMapper::toDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public static List<Xpto> fromDtoList(List<XptoDto> dtos) {
         return dtos.stream()
                 .map(XptoDtoMapper::fromDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

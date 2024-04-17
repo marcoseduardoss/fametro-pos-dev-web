@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import br.edu.unifametro.myproj.v1.xpto.exception.ValorOuRecursoNaoEncontradoException;
 import br.edu.unifametro.myproj.v1.xpto.model.Xpto;
 import br.edu.unifametro.myproj.v1.xpto.repository.RepositorioXpto;
 
@@ -21,7 +22,7 @@ public class ServicoXpto {
 		Sort ordenacao = Sort.by(Sort.Direction.DESC, "id");
 		List<Xpto> xptos = repositorioXpto.findAllOrdered(ordenacao);
 		if (xptos.isEmpty()) {// lanca excecao se nao existir
-			throw new NegocioException("Nenhuma xpto encontrada.");
+			throw new ValorOuRecursoNaoEncontradoException("Nenhuma xpto encontrada.");
 		}
 		return xptos;
 	}
@@ -42,7 +43,7 @@ public class ServicoXpto {
 	}
 
 	public Xpto buscarXptoPorId(Long id) {
-		return repositorioXpto.findById(id).orElseThrow(() -> new NegocioException("Xpto nao encontrada."));
+		return repositorioXpto.findById(id).orElseThrow(() -> new ValorOuRecursoNaoEncontradoException("Xpto nao encontrada."));
 	}
 
 }
