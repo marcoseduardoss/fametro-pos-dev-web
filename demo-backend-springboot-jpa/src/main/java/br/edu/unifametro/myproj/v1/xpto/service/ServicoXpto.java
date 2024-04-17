@@ -12,38 +12,49 @@ import br.edu.unifametro.myproj.v1.xpto.repository.RepositorioXpto;
 @Service
 public class ServicoXpto {
 
-	private RepositorioXpto repositorioXpto;
+    private final RepositorioXpto repositorioXpto;
 
-	public ServicoXpto(RepositorioXpto repositorioXpto) {
-		this.repositorioXpto = repositorioXpto;
-	}
+    public ServicoXpto(RepositorioXpto repositorioXpto) {
+        this.repositorioXpto = repositorioXpto;
+    }
 
-	public List<Xpto> listarXptos() {
-		Sort ordenacao = Sort.by(Sort.Direction.DESC, "id");
-		List<Xpto> xptos = repositorioXpto.findAllOrdered(ordenacao);
-		if (xptos.isEmpty()) {// lanca excecao se nao existir
-			throw new ValorOuRecursoNaoEncontradoException("Nenhuma xpto encontrada.");
-		}
-		return xptos;
-	}
+    public List<Xpto> listarXptos() {
+        Sort ordenacao = Sort.by(Sort.Direction.DESC, "id");
+        List<Xpto> xptos = repositorioXpto.findAllOrdered(ordenacao);
+        if (xptos.isEmpty()) {
+            throw new ValorOuRecursoNaoEncontradoException("Nenhuma xpto encontrada.");
+        }
+        return xptos;
+    }
 
-	public Xpto criarXpto(Xpto novaXpto) {
-		return repositorioXpto.save(novaXpto);
-	}
+    public Xpto criarXpto(Xpto novaXpto) {
+        return repositorioXpto.save(novaXpto);
+    }
 
-	public Xpto atualizarXpto(Xpto xpto) {
-		buscarXptoPorId(xpto.getId());// lanca excecao se nao existir
-		return repositorioXpto.save(xpto);// atualiza objeto nao nulo
+    public Xpto atualizarXpto(Xpto xpto) {
+        assegurarExistenciaXpto(xpto.getId());
+        return repositorioXpto.save(xpto);
+    }
 
-	}
+    public void removerXpto(Xpto xpto) {
+        assegurarExistenciaXpto(xpto.getId());
+        repositorioXpto.deleteById(xpto.getId());
+    }
+    
+    public Xpto buscarXptoPorId(Long id) {
+        return repositorioXpto.findById(id)
+            .orElseThrow(() -> new ValorOuRecursoNaoEncontradoException("Xpto com ID " + id + " não encontrada."));
+    }
 
-	public void removerXpto(Xpto xpto) {
-		buscarXptoPorId(xpto.getId());// lanca excecao se nao existir
-		repositorioXpto.deleteById(xpto.getId());// remove se id nao nulo
-	}
-
-	public Xpto buscarXptoPorId(Long id) {
-		return repositorioXpto.findById(id).orElseThrow(() -> new ValorOuRecursoNaoEncontradoException("Xpto nao encontrada."));
-	}
-
+    /**
+     * Verifica se uma entidade Xpto existe no repositório pelo ID.
+     * Lança uma exceção se a entidade não for encontrada.
+     * @param id O identificador da entidade Xpto
+     */
+    private void assegurarExistenciaXpto(Long id) {
+        if (!repositorioXpto.existsById(id)) {
+            throw new ValorOuRecursoNaoEncontradoException("Xpto com ID " + id + " não encontrada.");
+        }
+    }
+    
 }
