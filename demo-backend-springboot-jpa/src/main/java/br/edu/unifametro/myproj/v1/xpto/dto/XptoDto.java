@@ -3,7 +3,9 @@ package br.edu.unifametro.myproj.v1.xpto.dto;
 import java.time.LocalDateTime;
 
 /**
- * Classe de domínio de negócio
+ * Um DTO é uma classe simples que contém 
+ * apenas as informações necessárias para 
+ * transferência de dados.
  * @author marcos.eduardo
  */
 public class XptoDto {
