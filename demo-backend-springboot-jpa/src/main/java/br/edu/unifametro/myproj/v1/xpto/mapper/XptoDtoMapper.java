@@ -16,7 +16,7 @@ public class XptoDtoMapper {
         return out;
     }
     
-    public static Xpto fromDto(XptoDto in) {
+    public static Xpto fromDto(XptoDto in) { 
         Xpto out = new Xpto();
         out.setId(in.getId());
         out.setValor1(in.getValor1());
