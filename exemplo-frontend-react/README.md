@@ -52,5 +52,5 @@ Este arquivo é um exemplo básico que ilustra como criar um componente React si
 
 ## Suporte
 
-Para quaisquer dúvidas ou suporte relacionado a este projeto, por favor, entre em contato com o instrutor do curso ou assistentes de ensino.
+Para quaisquer dúvidas ou suporte relacionado a este projeto, por favor, entre em contato com o professor.
 
