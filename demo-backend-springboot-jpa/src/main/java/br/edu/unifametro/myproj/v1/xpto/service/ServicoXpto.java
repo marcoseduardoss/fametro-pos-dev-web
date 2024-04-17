@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import br.edu.unifametro.myproj.v1.xpto.exception.ValorOuRecursoNaoEncontradoException;
+import br.edu.unifametro.myproj.exception.RecursoNaoEncontradoGlobalException;
 import br.edu.unifametro.myproj.v1.xpto.model.Xpto;
 import br.edu.unifametro.myproj.v1.xpto.repository.RepositorioXpto;
 
@@ -22,7 +22,7 @@ public class ServicoXpto {
         Sort ordenacao = Sort.by(Sort.Direction.DESC, "id");
         List<Xpto> xptos = repositorioXpto.findAllOrdered(ordenacao);
         if (xptos.isEmpty()) {
-            throw new ValorOuRecursoNaoEncontradoException("Nenhuma xpto encontrada.");
+            throw new RecursoNaoEncontradoGlobalException("Nenhuma xpto encontrada.");
         }
         return xptos;
     }
@@ -43,7 +43,7 @@ public class ServicoXpto {
     
     public Xpto buscarXptoPorId(Long id) {
         return repositorioXpto.findById(id)
-            .orElseThrow(() -> new ValorOuRecursoNaoEncontradoException("Xpto com ID " + id + " não encontrada."));
+            .orElseThrow(() -> new RecursoNaoEncontradoGlobalException("Xpto com ID " + id + " não encontrada."));
     }
 
     /**
@@ -53,7 +53,7 @@ public class ServicoXpto {
      */
     private void assegurarExistenciaXpto(Long id) {
         if (!repositorioXpto.existsById(id)) {
-            throw new ValorOuRecursoNaoEncontradoException("Xpto com ID " + id + " não encontrada.");
+            throw new RecursoNaoEncontradoGlobalException("Xpto com ID " + id + " não encontrada.");
         }
     }
     
