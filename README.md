@@ -11,14 +11,20 @@ Este repositório contém os módulos de back-end e front-end para uma aplicaç�
 
 Obs.:  Normalmente, a expressão é utilizada para trazer exemplos e hipóteses para uma reunião ou uma conversa na equipe de tecnologia. Por exemplo: considerar a variável XPTO, desenvolver a funcionalidade XPTO ou o software XPTO, analisar o KPI XPTO, entre outros. 
 
+## Demonstração do Projeto
+
+Veja abaixo um GIF demonstrando como abrir e executar os projetos no Eclipse e Visual Studio Code.
+
+![Demonstração do Projeto](./animacao.gif)
+
 ### Projetos
 
 #### Back-End
-Localização: `package br.fametro.xpto;`
+Localização: `package br.fametro.myproj.xpto;`
 
 O back-end é desenvolvido com Spring Boot, configurado para oferecer uma API RESTful documentada com Swagger. Utiliza conexões CORS, configurações de servlet e JPA para interação com banco de dados SQLite através de Hibernate.
 
-**Tecnologias:** Spring Boot, Swagger, JPA
+**Tecnologias:** Spring Boot, Swagger, JPA e H2
 
 #### Front-End
 Localização: `html e javascript dentro do projeto`

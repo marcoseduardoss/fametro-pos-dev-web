@@ -10,7 +10,7 @@ O projeto destaca como o React pode ser usado como uma biblioteca sem dependênc
 
 Veja abaixo um GIF demonstrando como abrir e executar o projeto `xpto-page.html` tanto em um navegador web quanto no Visual Studio Code.
 
-![Demonstração do Projeto](animacao.gif)
+![Demonstração do Projeto](./animacao.gif)
 
 
 ## Conteúdo
