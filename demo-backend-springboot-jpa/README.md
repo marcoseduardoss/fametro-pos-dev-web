@@ -33,7 +33,7 @@ Veja abaixo um GIF demonstrando como abrir e executar os projetos no Eclipse e V
 Para obter o projeto, use o seguinte comando do Git:
 
 ```bash
-git clone https://github.com/marcoseduardoss/fametro-pos-dev-web/tree/main/demo-backend-springboot-jpa
+git clone https://github.com/marcoseduardoss/fametro-pos-dev-web
 ```
 ## Executando o Projeto
 
